@@ -80,8 +80,8 @@ input[Type='time']{
   border-bottom-right-radius: 1rem;
 }
 
-.button.eliminar,
-.button.eliminar:hover{
+.button.delete,
+.button.delete:hover{
   background-color: #c10059;
   color: white;
   margin-top: 2rem;
