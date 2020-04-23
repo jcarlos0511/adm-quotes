@@ -1,25 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Fragment, useState} from 'react';
+import Form from './components/Form';
+import Quote from './components/Quote'
 
 function App() {
+
+  // Arrays of quotes
+  const [quotes, saveQuotes] = useState([]);
+
+  // Function that adds current and new 'quotes'
+  const createQuote = quote => {
+    saveQuotes([
+      ...quotes,
+      quote
+    ]);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <h1>Patient Management</h1>
+      <div className='container'>
+        <div className="row">
+          <div className='one-half column'>
+            <Form
+              createQuote={createQuote}
+             />
+          </div>
+          <div className='one-half column'>
+            <h2>Quotes</h2>
+            {quotes.map(quote => (
+              <Quote
+              key={quote.id}
+              quote={quote}
+               />
+            ))}
+          </div>
+        </div>
+      </div>
+    </Fragment>
+
   );
 }
 
